@@ -28,7 +28,6 @@ function Low ({hourValue, setHourValue}) {
         } else {
             setShowElement('countdown');
         }
-    //     // setShowElement('right now');
         setTime(newDate);
         setHourValue(event.currentTarget.value);
     }
