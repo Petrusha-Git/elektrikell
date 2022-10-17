@@ -19,7 +19,8 @@ function Low ({hourValue, setHourValue}) {
         {label: '6h', value: '6'},
         {label: '8h', value: '8'},
     ];
-    
+
+    // объект события (event) держит в себе информацию об элементе над которыми было совершено действие
     function handleOnChange(event) {
         const hour = event.currentTarget.value;
         const newDate = new Date().setHours(23 - hour,59,59,999);
@@ -28,10 +29,15 @@ function Low ({hourValue, setHourValue}) {
         } else {
             setShowElement('countdown');
         }
-    //     // setShowElement('right now');
+            setShowElement('right now');
         setTime(newDate);
         setHourValue(event.currentTarget.value);
     }
+    // onChange = trigger события
+    // событие к нам приходит от браузера а к браузеру приходит от пользователя
+    // onChange запускается когда пользователь сделал изменения в input элементах (radio button)
+    // onChange запускает функции которых мы называем обработчиками. В обработчик, триггер события отправляет объект события(event)
+    // Триггеры событий всегда начинаются с 'on'
  return (   
 <>
             <Row>
