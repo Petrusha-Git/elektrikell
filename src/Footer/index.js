@@ -1,11 +1,12 @@
 import High from './high';
 import Low from './low';
 
-function Footer({ radioValue, hourValue, setHourValue }) {
+function Footer(props) {
     
     return (
         <>
-            {radioValue === 'Low' ? (<Low {...{hourValue, setHourValue}} />) : (<High />)}
+            {props.radioValue === 'Low' ? (<Low {...props} />) : 
+            (<High currentPrice={props.currentPrice} worstTimeRange={props.worstTimeRange} />)}
         </>
     );
 }
