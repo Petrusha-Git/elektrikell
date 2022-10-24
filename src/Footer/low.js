@@ -20,6 +20,13 @@ function Low({ hourValue, setHourValue, bestTimeRange, currentPrice }) {
         { label: '8h', value: 8 },
     ];
 
+    // useEffect - react hook который запускается после того, как весь компонент выполнел рендер
+    // 1 аргумент это callback функция которая запускается при...
+    // 2 аргумент massive из зависимостей
+    // зависимость это переменные которые изпользуется в callback функции
+    // зависимости при изменении запускают callback функцию заново
+    // оставив пустой массив в зависимостях ты гарантируешь что колбэк функция запускается только один раз
+    // даже при изменении state, при условии что в колбэк функции ты state не изпользуешь
     useEffect(() => {
         const countDownUntil = moment.unix(bestTimeRange.timestamp).toDate();
         setTime(countDownUntil);
