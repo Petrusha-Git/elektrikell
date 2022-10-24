@@ -18,34 +18,34 @@ function App() {
   const [worstTimeRange, setWorstTimeRange] = useState({
     from: 0,
     until: 0,
-    timestamp: null,
     worstPrice: 0,
   });
-  const [selectedCountry, setSelectedCountry] = useState({ key: 'EE', title: 'Eesti' });
+  const [selectedCountry, setSelectedCountry] = useState({ key: 'ee', title: 'Eesti' });
+
   return (
     <Container>
       <Header 
-      setRadioValue={setRadioValue} 
-      radioValue={radioValue} 
-      currentPrice={currentPrice} 
-      setCurrentPrice={setCurrentPrice}
-      setSelectedCountry={setSelectedCountry}
-      selectedCountry={selectedCountry}
+        setRadioValue={setRadioValue} 
+        radioValue={radioValue} 
+        currentPrice={currentPrice}
+        setCurrentPrice={setCurrentPrice}
+        setSelectedCountry={setSelectedCountry}
+        selectedCountry={selectedCountry}
       />
       <Body 
-      radioValue={radioValue} 
-      hourValue={hourValue} 
-      setBestTimeRange={setBestTimeRange}
-      setWorstTimeRange={setWorstTimeRange}
-      selectedCountry={selectedCountry}
-       />
+        radioValue={radioValue}
+        hourValue={hourValue} 
+        setBestTimeRange={setBestTimeRange} 
+        setWorstTimeRange={setWorstTimeRange}
+        selectedCountry={selectedCountry}
+        />
       <Footer 
-      radioValue={radioValue} 
-      hourValue={hourValue} 
-      setHourValue={setHourValue} 
-      bestTimeRange={bestTimeRange}
-      currentPrice={currentPrice}
-      worstTimeRange={worstTimeRange} />
+        radioValue={radioValue} 
+        hourValue={hourValue} 
+        setHourValue={setHourValue} 
+        bestTimeRange={bestTimeRange}
+        currentPrice={currentPrice}
+        worstTimeRange={worstTimeRange}/>
     </Container>
   );
 }

@@ -8,24 +8,25 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import { getCurrentPrice } from '../services/apiService';
 import ErrorModal from '../ErrorModal';
 
-function Header({ 
+function Header({
     currentPrice,
     setCurrentPrice,
     radioValue,
     setRadioValue,
     selectedCountry,
     setSelectedCountry,
-    }) {
+}) {
 
     const [showError, setShowError] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
 
     const countries = [
-        {key: 'EE', title: 'Eesti'},
-        {key: 'FI', title: 'Finland'},
-        {key: 'LV', title: 'Latvia'},
-        {key: 'LT', title: 'Lithuania'},
-    ]
+        { key: 'ee', title: 'Eesti' },
+        { key: 'fi', title: 'Soome' },
+        { key: 'lv', title: 'Läti' },
+        { key: 'lt', title: 'Leedu' },
+    ];
+
     useEffect(() => {
         (async function () {
             try {
@@ -36,13 +37,11 @@ function Header({
                 setErrorMessage(error.message);
             }
         })();
-
     }, [setCurrentPrice]);
 
-
     const radios = [
-        { name: 'Low price', value: 'Low' },
-        { name: 'High Price', value: 'High' },
+        { name: 'Low Price', value: 'low' },
+        { name: 'High price', value: 'high' },
     ];
 
     function handleOnChangePrice(event) {
@@ -54,7 +53,6 @@ function Header({
         setSelectedCountry(countries.find(country => country.key === key));
     }
 
-
     return (
         <>
             <Row>
@@ -62,12 +60,13 @@ function Header({
                 <Col>
                     <DropdownButton
                         key="Secondary"
-                        id={`dropdown-variants-variant`}
+                        id={`dropdown-variants-secondary`}
                         variant="secondary"
-                        onSelect={handleOnSelectCountry} 
+                        onSelect={handleOnSelectCountry}
                         title={selectedCountry.title}
                     >
                         {countries.map(country => <Dropdown.Item key={country.key} eventKey={country.key}>{country.title}</Dropdown.Item>)}
+
                     </DropdownButton>
                 </Col>
             </Row>
