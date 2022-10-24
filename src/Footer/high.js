@@ -1,7 +1,7 @@
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-function High ({currentPrice, worstTimeRange}) {
+function High({currentPrice, worstTimeRange}) {
     return (
         <>
             <Row>
@@ -12,14 +12,14 @@ function High ({currentPrice, worstTimeRange}) {
             </Row>
             <Row>
                 <Col>Siis on kilovatt-tunni hind {currentPrice} eur, 
-                mis on {Math.round(100 - worstTimeRange.worstPrice / currentPrice * 100)}% kallim kui praegu</Col>
+                    mis on {Math.round(100 - worstTimeRange.worstPrice / currentPrice * 100)}% kallim kui praegu
+                </Col>
             </Row>
             <Row>
-                <Col>Soovitame tiptundide ajal vähendada elektri tarbimist, et aidata kaasa Euroopa ühisele eesmärgile alandada tiputundidel -5% elektri tarbmist ja vähendada maagaasi nõudlust.</Col>
+                <Col>Soovitame tiptundide ajal vähendada elektri tarbimist, et aidata kaasa Euroopa ühisele eesmärgile alandada tiputundidel -5% elektri tarbmist ja vähendada maagaasi nõudlust. Loe lähemalt</Col>
             </Row>
         </>
     );
-
 }
 
-export default High
+export default High;
