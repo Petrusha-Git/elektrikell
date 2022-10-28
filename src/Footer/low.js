@@ -7,6 +7,7 @@ import Countdown from 'react-countdown';
 import moment from 'moment';
 import { useSelector, useDispatch } from 'react-redux';
 import { setHourValue } from '../services/stateService';
+import { useParams, useNavigate } from 'react-router-dom';
 
 function Low() {
     console.log('Low render');
@@ -15,8 +16,9 @@ function Low() {
     const hourValue = useSelector((state) => state.hourValue);
     const currentPrice = useSelector((state) => state.currentPrice);
     const bestTimeRange = useSelector((state) => state.bestTimeRange);
-
+    const { hours } = useParams();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const cheapHours = [
         { label: '1h', value: 1 },
@@ -30,7 +32,8 @@ function Low() {
     useEffect(() => {
         const countDownUntil = moment.unix(bestTimeRange.timestamp).toDate();
         setTime(countDownUntil);
-    }, [bestTimeRange]);
+        dispatch(setHourValue(+hours || 1));
+    }, [bestTimeRange, hours, dispatch]);
 
     function handleOnChange(event) {
         const hour = event.currentTarget.value;
@@ -40,6 +43,7 @@ function Low() {
         } else {
             setShowElement('right now');
         }
+        navigate('/low/' + hour)
         dispatch(setHourValue(+hour));
     }
 
