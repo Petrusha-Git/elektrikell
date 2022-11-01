@@ -10,7 +10,6 @@ import { setHourValue } from '../services/stateService';
 import { useParams, useNavigate } from 'react-router-dom';
 
 function Low() {
-    console.log('Low render');
     const [showElement, setShowElement] = useState('countdown');
     const [time, setTime] = useState(null);
     const hourValue = useSelector((state) => state.hourValue);
