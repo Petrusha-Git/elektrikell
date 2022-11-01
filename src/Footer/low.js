@@ -15,6 +15,7 @@ function Low() {
     const hourValue = useSelector((state) => state.hourValue);
     const currentPrice = useSelector((state) => state.currentPrice);
     const bestTimeRange = useSelector((state) => state.bestTimeRange);
+    // useParams даёт нам переданные параметры через url
     const { hours } = useParams();
     const dispatch = useDispatch();
     const navigate = useNavigate();

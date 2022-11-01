@@ -15,10 +15,19 @@ import { useNavigate, useLocation } from 'react-router-dom';
 function Header() {
     const [showError, setShowError] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
+    // useSelector hook - который помогает нам следить за redux state и возвращает нам новое значение
+    // useSelector применяет функцию в котором мы получаем всё состояние redux и выбираем необходимый
+    // useSelector при необходимости запускает рендер компонента
+    // useSelector ловит
     const currentPrice = useSelector((state) => state.currentPrice);
     const selectedCountry = useSelector((state) => state.selectedCountry);
+    // useDispatch эта функция отправки действия/action, он применяет action, который нужно выполнить
+    // В краце - это связной между компонентом и redux
+    // dispatch отправляет
     const dispatch = useDispatch();
+    // useNavigate - hook, который даёт нам возможность навигировать на другую страницу/компонент
     const navigate = useNavigate();
+    // useLocation - даёт информацию по данной странице/url. Даёт информацию, где мы находимся
     const location = useLocation();
 
 
@@ -33,6 +42,8 @@ function Header() {
         (async function () {
             try {
                 const response = await getCurrentPrice(selectedCountry);
+                // dispatch запустил action, action в свою очередь запустил reducer
+                // v reducer передались данные в объект action.payload.
                 dispatch(setCurrentPrice(response.data[0].price));
             } catch (error) {
                 setShowError(true);
@@ -48,6 +59,7 @@ function Header() {
 
     function handleOnChangePrice(event) {
         // event.preventDefault();
+        // отправляет на другую страницу
         navigate(event.currentTarget.value);
     }
 
@@ -77,7 +89,11 @@ function Header() {
                 <Col>Status</Col>
                 <Col className="text-center">
                     {/* <Link to="/high">Show high price</Link>
-                    <Link to="/low">Show low price</Link> */}
+                    <Link to="/low">Show low price</Link>
+                    Link и useNavigate  - по сути одно и то же
+                    Link - компонент который нас отправит по ссылке, которую мы передали props to
+                    useNavigate - hook, который используем вне JSX
+                    */}
                     <ButtonGroup>
                         {radios.map((radio, idx) => (
                             <ToggleButton
